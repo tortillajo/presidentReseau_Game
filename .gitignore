@@ -11,3 +11,11 @@
 *.lai
 *.la
 *.a
+
+# custom
+.
+..
+*.user
+moc_*
+*.Release
+*.Debug
