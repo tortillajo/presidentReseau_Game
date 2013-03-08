@@ -4,7 +4,12 @@
 #
 #-------------------------------------------------
 
+
 QT       += core gui
+QT       += widgets
+QT       += gui declarative
+CONFIG   += qt gui
+CONFIG   += qt
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -12,9 +17,12 @@ TARGET = PresidentReseau_Game
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        mainwindows.cpp
+SOURCES += main.cpp \
+    mainwindow.cpp \
+    serverwindow.cpp
 
-HEADERS  += mainwindows.hpp
+HEADERS  += \
+    mainwindow.hpp \
+    serverwindow.hpp
 
-FORMS    += mainwindows.ui
+FORMS    +=

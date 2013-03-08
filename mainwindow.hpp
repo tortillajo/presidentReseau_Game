@@ -1,10 +1,7 @@
 #ifndef MAINWINDOW_HPP
 #define MAINWINDOW_HPP
-#include <QGuiApplication>
-#include <QApplication>
 #include <QWidget>
-#include <QClipboard>
-#include <QLayout>
+#include <QGridLayout>
 #include <QStatusBar>
 #include <QMenuBar>
 #include <QMenu>
@@ -14,7 +11,10 @@
 #include <QLabel>
 #include <QFileDialog>
 #include <QString>
-#include <QFile>
+#include "serverwindow.hpp"
+#include "mainwindow.hpp"
+
+class ServerWindow;
 
 class MainWindow : public QWidget
 {
@@ -34,18 +34,21 @@ class MainWindow : public QWidget
 
 
     private:
+        ServerWindow *m_serverWindow;
         //MENU
         QMenuBar *m_menuBar;
         QMenu *m_menuServer;
         QMenu *m_menuOption;
         QMenu *m_menuAbout;
-        QAction *m_menuFile_actionQuit;
-        QStatusBar *m_statusMainbar;
-
-        QPushButton *m_buttonQuit;
-
+        QAction *m_menuServer_actionConnect;
+        QAction *m_menuServer_actionDisconnect;
+        QAction *m_menuServer_actionQuit;
+        QAction *m_menuAbout_actionReadme;
+        //QMenu *m_menuBoomark;
         // MAIN WIDGET
         QVBoxLayout *m_vlayoutMain;
+        QStatusBar *m_statusMainbar;
+        QPushButton *m_buttonQuit;
 };
 
 #endif // MAINWINDOW_HPP
