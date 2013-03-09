@@ -5,11 +5,13 @@
 #-------------------------------------------------
 
 
-QT       += core gui
-QT       += widgets
-QT       += gui declarative
-CONFIG   += qt gui
-CONFIG   += qt
+#QT       += core gui
+#QT       += widgets
+#QT       += gui declarative
+#CONFIG   += qt gui
+CONFIG   += core
+QT       += network
+QT       += gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 

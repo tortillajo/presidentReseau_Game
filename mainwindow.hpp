@@ -13,9 +13,9 @@
 #include <QString>
 #include "serverwindow.hpp"
 #include "mainwindow.hpp"
+#include "client.hpp"
 
 class ServerWindow;
-
 class MainWindow : public QWidget
 {
     Q_OBJECT
@@ -29,12 +29,12 @@ class MainWindow : public QWidget
         void initializeAllSignals();
 
     public slots:
+        void ConnectingToServer(QString ip, quint16 port, QString pseudo);
 
     signals:
-
-
     private:
         ServerWindow *m_serverWindow;
+        Client *m_client;
         //MENU
         QMenuBar *m_menuBar;
         QMenu *m_menuServer;

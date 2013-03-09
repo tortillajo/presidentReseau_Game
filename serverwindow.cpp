@@ -1,11 +1,12 @@
 #include "serverwindow.hpp"
 #include "mainwindow.hpp"
 
-ServerWindow::ServerWindow() : QWidget()
+ServerWindow::ServerWindow(MainWindow *parent) : QWidget()
 {
+    m_parent = parent;
     m_gboxMain = new QGridLayout(this);
     m_lineIpServer = new QLineEdit(this);
-    m_linePortServer = new QLineEdit(this);
+    m_linePortServer = new QSpinBox(this);
     m_linePseudoServer = new QLineEdit(this);
     m_labelIp  = new QLabel(this);
     m_labelPort  = new QLabel(this);
@@ -21,7 +22,9 @@ ServerWindow::ServerWindow() : QWidget()
 void ServerWindow::initializeAllWidgets()
 {
     this->setWindowTitle(tr("Connexion à un serveur"));
-    m_linePortServer->setText("10313");
+    m_linePortServer->setMaximum(65535);
+    m_linePortServer->setMinimum(1025);
+    m_linePortServer->setValue(9033);
     m_labelIp->setText(tr("Adresse"));
     m_labelPort->setText(tr("Port"));
     m_labelPseudo->setText(tr("Pseudo"));
@@ -46,4 +49,13 @@ void ServerWindow::initializeAllLayouts()
 void ServerWindow::initializeAllSignals()
 {
     connect(m_buttonCancel, SIGNAL(clicked()), this, SLOT(hide()));
+    connect(m_buttonConnect, \
+            SIGNAL(clicked()), \
+            this, \
+            SLOT(acceptConnection()));
+}
+
+void ServerWindow::acceptConnection()
+{
+    m_parent->ConnectingToServer(m_lineIpServer->text(), m_linePortServer->value(), m_linePseudoServer->text());
 }

@@ -3,7 +3,9 @@
 
 MainWindow::MainWindow() : QWidget()
 {
-    m_serverWindow = new ServerWindow();
+    m_serverWindow = new ServerWindow(this);
+    m_client = new Client();
+    m_client = new Client();
     m_vlayoutMain = new QVBoxLayout(this);
     m_menuBar = new QMenuBar(this);
     m_menuServer = new QMenu(this);
@@ -50,4 +52,9 @@ void MainWindow::initializeAllSignals()
     connect(m_buttonQuit, SIGNAL(clicked()), qApp, SLOT(quit()));
     connect(m_menuServer_actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(m_menuServer_actionConnect, SIGNAL(triggered()), m_serverWindow, SLOT(show()));
+}
+
+void MainWindow::ConnectingToServer(QString ip, quint16 port, QString pseudo)
+{
+
 }

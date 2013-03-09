@@ -15,25 +15,29 @@
 #include <QFileDialog>
 #include <QString>
 #include <QFile>
+#include <QSpinBox>
 #include "mainwindow.hpp"
 #include "serverwindow.hpp"
 
+class MainWindow;
 class ServerWindow : public QWidget
 {
     Q_OBJECT
 
     public:
-        ServerWindow();
+        ServerWindow(MainWindow *parent);
 
     private:
         void initializeAllWidgets();
         void initializeAllLayouts();
         void initializeAllSignals();
+        void acceptConnection();
 
     private:
+        MainWindow *m_parent;
         QGridLayout *m_gboxMain;
         QLineEdit *m_lineIpServer;
-        QLineEdit *m_linePortServer;
+        QSpinBox *m_linePortServer;
         QLineEdit *m_linePseudoServer;
         QLabel *m_labelIp;
         QLabel *m_labelPort;
