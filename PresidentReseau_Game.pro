@@ -19,10 +19,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     mainwindow.cpp \
-    serverwindow.cpp
+    serverwindow.cpp \
+    client.cpp
 
 HEADERS  += \
     mainwindow.hpp \
-    serverwindow.hpp
+    serverwindow.hpp \
+    client.hpp
 
 FORMS    +=
