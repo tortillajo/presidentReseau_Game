@@ -1,20 +1,31 @@
 #ifndef CLIENT_HPP
 #define CLIENT_HPP
+#include <QWidget>
 #include <QString>
 #include <QtNetwork>
 
-class Client
+class Client : public QWidget
 {
+        Q_OBJECT
     public:
+        Client(QString ip, quint16 port, QString pseudo);
         Client();
-        int setSocket(QTcpSocket sock);
-        int setIp(QString ip);
-        int setPort(quint16 port);
-        int setPseudo(QString pseudo);
-        QTcpSocket socket();
+        void setSocket(QTcpSocket *sock);
+        void setIp(QString ip);
+        void setPort(quint16 port);
+        void setPseudo(QString pseudo);
+        QTcpSocket *socket();
         QString ip();
         quint16 port();
         QString pseudo();
+
+    private:
+        bool testIp();
+        bool testPort();
+        bool testPseudo();
+
+    public slots:
+        void connect();
 
     private:
         QTcpSocket *m_sock;

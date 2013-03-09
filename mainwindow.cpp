@@ -5,7 +5,6 @@ MainWindow::MainWindow() : QWidget()
 {
     m_serverWindow = new ServerWindow(this);
     m_client = new Client();
-    m_client = new Client();
     m_vlayoutMain = new QVBoxLayout(this);
     m_menuBar = new QMenuBar(this);
     m_menuServer = new QMenu(this);
@@ -56,5 +55,8 @@ void MainWindow::initializeAllSignals()
 
 void MainWindow::ConnectingToServer(QString ip, quint16 port, QString pseudo)
 {
+    m_client->setIp(ip);
+    m_client->setPort(port);
+    m_client->setPseudo(pseudo);
 
 }
