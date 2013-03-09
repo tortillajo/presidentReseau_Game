@@ -34,6 +34,10 @@ class ServerWindow : public QWidget
         QGridLayout *m_gboxMain;
         QLineEdit *m_lineIpServer;
         QLineEdit *m_linePortServer;
+        QLineEdit *m_linePseudoServer;
+        QLabel *m_labelIp;
+        QLabel *m_labelPort;
+        QLabel *m_labelPseudo;
         QPushButton *m_buttonConnect;
         QPushButton *m_buttonEfface;
         QPushButton *m_buttonCancel;
