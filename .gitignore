@@ -19,3 +19,5 @@
 moc_*
 *.Release
 *.Debug
+#bin
+PresidentReseau_Game
