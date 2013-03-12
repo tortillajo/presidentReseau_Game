@@ -25,7 +25,7 @@ class Client : public QWidget
         bool testPseudo();
 
     public slots:
-        void connect();
+        void connexion();
 
     private:
         QTcpSocket *m_sock;

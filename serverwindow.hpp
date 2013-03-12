@@ -16,7 +16,7 @@
 #include <QString>
 #include <QFile>
 #include <QSpinBox>
-#include "mainwindow.hpp"
+#include "client.hpp"
 #include "serverwindow.hpp"
 
 class MainWindow;
@@ -25,16 +25,18 @@ class ServerWindow : public QWidget
     Q_OBJECT
 
     public:
-        ServerWindow(MainWindow *parent);
+        ServerWindow(Client *client);
 
     private:
         void initializeAllWidgets();
         void initializeAllLayouts();
         void initializeAllSignals();
-        void acceptConnection();
+
+    public slots:
+        void connexion();
 
     private:
-        MainWindow *m_parent;
+        Client *m_client;
         QGridLayout *m_gboxMain;
         QLineEdit *m_lineIpServer;
         QSpinBox *m_linePortServer;

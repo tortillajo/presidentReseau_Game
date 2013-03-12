@@ -9,7 +9,7 @@
 #QT       += widgets
 #QT       += gui declarative
 #CONFIG   += qt gui
-CONFIG   += core
+CONFIG   += core debug
 QT       += network
 QT       += gui
 

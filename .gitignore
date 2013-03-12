@@ -21,3 +21,4 @@ moc_*
 *.Debug
 #bin
 PresidentReseau_Game
+Makefile*

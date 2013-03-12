@@ -1,9 +1,10 @@
 #include "serverwindow.hpp"
-#include "mainwindow.hpp"
+#include "client.hpp"
+#include <iostream>
 
-ServerWindow::ServerWindow(MainWindow *parent) : QWidget()
+ServerWindow::ServerWindow(Client *client) : QWidget()
 {
-    m_parent = parent;
+    m_client = client;
     m_gboxMain = new QGridLayout(this);
     m_lineIpServer = new QLineEdit(this);
     m_linePortServer = new QSpinBox(this);
@@ -25,6 +26,8 @@ void ServerWindow::initializeAllWidgets()
     m_linePortServer->setMaximum(65535);
     m_linePortServer->setMinimum(1025);
     m_linePortServer->setValue(9033);
+    m_lineIpServer->setText("127.0.0.1");
+    m_linePseudoServer->setText("Unknow");
     m_labelIp->setText(tr("Adresse"));
     m_labelPort->setText(tr("Port"));
     m_labelPseudo->setText(tr("Pseudo"));
@@ -49,13 +52,14 @@ void ServerWindow::initializeAllLayouts()
 void ServerWindow::initializeAllSignals()
 {
     connect(m_buttonCancel, SIGNAL(clicked()), this, SLOT(hide()));
-    connect(m_buttonConnect, \
-            SIGNAL(clicked()), \
-            this, \
-            SLOT(acceptConnection()));
+    connect(m_buttonConnect,SIGNAL(clicked()), this, SLOT(connexion()));
 }
 
-void ServerWindow::acceptConnection()
+void ServerWindow::connexion()
 {
-    m_parent->ConnectingToServer(m_lineIpServer->text(), m_linePortServer->value(), m_linePseudoServer->text());
+    qDebug() << "Connexion en cours...";
+    m_client->setIp(m_lineIpServer->text());
+    m_client->setPort(m_linePortServer->value());
+    m_client->setPseudo(m_linePseudoServer->text());
+    m_client->connexion();
 }

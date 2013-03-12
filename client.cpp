@@ -1,4 +1,5 @@
 #include "client.hpp"
+#include <iostream>
 
 Client::Client(QString ip, quint16 port, QString pseudo) : QWidget()
 {
@@ -55,13 +56,15 @@ bool Client::testIp()
 {
     if (!m_ip.isEmpty())
         return true;
+    qDebug() << "[ERR] ip failed!";
     return false;
 }
 
 bool Client::testPort()
 {
-    if (!m_port > 1024 && m_port < 65535)
+    if (m_port > 1024 && m_port < 65535)
         return true;
+    qDebug() << "[ERR] port failed : " << m_port << "!";
     return false;
 }
 
@@ -69,14 +72,29 @@ bool Client::testPseudo()
 {
     if (!m_pseudo.isEmpty() && m_pseudo.length() < 16)
         return true;
+    qDebug() << "[ERR] pseudo failed!";
     return false;
 }
 
-void Client::connect()
+void Client::connexion()
 {
     if (testIp() && testPort() && testPseudo())
     {
-        m_sock->bind(QHostAddress(m_ip), m_port);
+        qDebug() << "Succes. Waiting connexion...";
+        m_sock = new QTcpSocket(this);
+        m_sock->connectToHost(m_ip, m_port);
+        if (m_sock->waitForConnected())
+        {
+            qDebug("Connection failed!");
+        }
+        else
+        {
+            qDebug() << "Connection successful!";
+        }
+    }
+    else
+    {
+        qDebug() << "[ERR] tests failed \n";
     }
     return;
 }

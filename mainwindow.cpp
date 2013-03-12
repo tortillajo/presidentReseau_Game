@@ -3,8 +3,8 @@
 
 MainWindow::MainWindow() : QWidget()
 {
-    m_serverWindow = new ServerWindow(this);
     m_client = new Client();
+    m_serverWindow = new ServerWindow(m_client);
     m_vlayoutMain = new QVBoxLayout(this);
     m_menuBar = new QMenuBar(this);
     m_menuServer = new QMenu(this);
@@ -25,6 +25,7 @@ void MainWindow::initializeAllWidgets()
 {
     this->setWindowTitle(tr("Président Réseau - jeu de carte multijoueur"));
     this->setLayout(m_vlayoutMain);
+    m_serverWindow->show();
     m_vlayoutMain->setMenuBar(m_menuBar);
 
     m_menuServer = m_menuBar->addMenu(tr("&Connexion", "Connexion aux servs"));
@@ -53,10 +54,3 @@ void MainWindow::initializeAllSignals()
     connect(m_menuServer_actionConnect, SIGNAL(triggered()), m_serverWindow, SLOT(show()));
 }
 
-void MainWindow::ConnectingToServer(QString ip, quint16 port, QString pseudo)
-{
-    m_client->setIp(ip);
-    m_client->setPort(port);
-    m_client->setPseudo(pseudo);
-
-}

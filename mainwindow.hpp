@@ -29,8 +29,6 @@ class MainWindow : public QWidget
         void initializeAllSignals();
 
     public slots:
-        void ConnectingToServer(QString ip, quint16 port, QString pseudo);
-
     signals:
     private:
         ServerWindow *m_serverWindow;
