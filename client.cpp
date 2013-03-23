@@ -83,18 +83,19 @@ void Client::connexion()
         qDebug() << "Succes. Waiting connexion...";
         m_sock = new QTcpSocket(this);
         m_sock->connectToHost(m_ip, m_port);
-        if (m_sock->waitForConnected())
+        if (m_sock->waitForConnected(2000))
         {
-            qDebug("Connection failed!");
+            qDebug() << "Connection successful!";
         }
         else
         {
-            qDebug() << "Connection successful!";
+            m_sock->error();
+            qDebug() << "Connection failed!";
         }
     }
     else
     {
-        qDebug() << "[ERR] tests failed \n";
+        qDebug() << "[ERR] tests failed!";
     }
     return;
 }

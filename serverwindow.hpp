@@ -32,7 +32,7 @@ class ServerWindow : public QWidget
         void initializeAllLayouts();
         void initializeAllSignals();
 
-    public slots:
+    private slots:
         void connexion();
 
     private:

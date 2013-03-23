@@ -28,7 +28,7 @@ class MainWindow : public QWidget
         void initializeAllLayouts();
         void initializeAllSignals();
 
-    public slots:
+    private slots:
     signals:
     private:
         ServerWindow *m_serverWindow;

@@ -34,6 +34,7 @@ void ServerWindow::initializeAllWidgets()
     m_buttonCancel->setText(tr("&Annuler", "Quitter"));
     m_buttonConnect->setText(tr("&Connexion", "Connexion au serveur"));
     m_buttonEfface->setText(tr("&Effacer", "Effacer le contenu de la ligne"));
+    m_buttonEfface->setEnabled(false);
 }
 
 void ServerWindow::initializeAllLayouts()
